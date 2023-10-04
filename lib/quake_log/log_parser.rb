@@ -9,8 +9,10 @@ class LogParser
   end
 
   def parser
+    game_match = nil
     @file.each_line do |line|
-      if line.include?('InitGame:')
+      if line.include? 'InitGame:'
+        game_match = new_game_match
         matches << game_match
       end
 
@@ -23,8 +25,8 @@ class LogParser
 
   private
 
-  def game_match
-    @game_match ||= GameMatch.new
+  def new_game_match
+    GameMatch.new
   end
 
   def create_kill(line:, game_match:)
