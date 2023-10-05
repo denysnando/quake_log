@@ -1,28 +1,50 @@
-# QuakeLog
-Short description and motivation.
+# Quake log Command Line System
 
-## Usage
-How to use my plugin.
+This project demonstrates a text-based command system to generate a history quake_log implemented in Ruby. It includes two classes, `Base` and `Main`, within the `Repl` module, which allow users to select and execute commands from a menu of options.
+
+Requirements based on these [challenges](https://gist.github.com/cloudwalk-tests/704a555a0fe475ae0284ad9088e203f1)
+
+## Features
+
+- Displays a menu of options to the user.
+- Executes commands based on user input.
+
+## Table of Contents
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tests](#Tests)
+
+## Requirements
+
+Before running the project, make sure you have the following:
+
+- Ruby installed (version 3.1.2).
 
 ## Installation
-Add this line to your application's Gemfile:
 
-```ruby
-gem "quake_log"
-```
+1. Clone this repository to your local machine:
 
-And then execute:
-```bash
-$ bundle
-```
+   ```bash
+     git clone https://github.com/denysnando/quake_log
+   ```
+2. Setup
+   ```bash
+     cd quake_log/
+     ./bin/setup
+   ```
 
-Or install it yourself as:
-```bash
-$ gem install quake_log
-```
+## Usage
+  ```bash
+    ./bin/run
+  ```
 
-## Contributing
-Contribution directions go here.
+## Tests
+  ```bash
+    rspec
+  ```
 
-## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+## How can it be improved?
+- Add docker;
+- Add the simple coverage gem
