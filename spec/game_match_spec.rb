@@ -33,4 +33,37 @@ RSpec.describe GameMatch do
       expect(game_match.kills.first).to be_a(Kill)
     end
   end
+
+  describe '#calculate_total_kills' do
+    it 'calculates the total number of kills in the game' do
+      game_match.create_kill(killer_id: 1, victim_id: 2, death_type: 'MOD_SHOTGUN')
+      game_match.create_kill(killer_id: 3, victim_id: 2, death_type: 'MOD_RAILGUN')
+
+      expect(game_match.calculate_total_kills).to eq(2)
+    end
+  end
+
+  describe '#calculate_kills_by_player' do
+    it 'calculates kills by player' do
+      game_match.create_kill(killer_id: 1, victim_id: 2, death_type: 'MOD_SHOTGUN')
+      game_match.create_kill(killer_id: 1, victim_id: 3, death_type: 'MOD_SHOTGUN')
+      game_match.create_kill(killer_id: 2, victim_id: 1, death_type: 'MOD_ROCKET')
+      game_match.create_kill(killer_id: 3, victim_id: 1, death_type: 'MOD_RAILGUN')
+
+      expected_result = { 1 => 2, 2 => 1, 3 => 1 }
+      expect(game_match.calculate_kills_by_player).to eq(expected_result)
+    end
+  end
+
+  describe '#calculate_kills_by_death_type' do
+    it 'calculates kills by death type' do
+      game_match.create_kill(killer_id: 1, victim_id: 2, death_type: 'MOD_SHOTGUN')
+      game_match.create_kill(killer_id: 3, victim_id: 2, death_type: 'MOD_RAILGUN')
+      game_match.create_kill(killer_id: 2, victim_id: 1, death_type: 'MOD_ROCKET')
+      game_match.create_kill(killer_id: 3, victim_id: 1, death_type: 'MOD_RAILGUN')
+
+      expected_result = { 'MOD_SHOTGUN' => 1, 'MOD_RAILGUN' => 2, 'MOD_ROCKET' => 1 }
+      expect(game_match.calculate_kills_by_death_type).to eq(expected_result)
+    end
+  end
 end
