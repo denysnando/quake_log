@@ -40,6 +40,8 @@ Before running the project, make sure you have the following:
     ./bin/run
   ```
 
+![Captura de Tela 2023-10-05 às 08 38 53](https://github.com/denysnando/quake_log/assets/3411874/ce6c2c6f-268c-4abf-ba25-57bf0c10fad1)
+
 ## Tests
   ```bash
     rspec
