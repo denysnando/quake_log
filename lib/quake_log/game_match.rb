@@ -25,11 +25,11 @@ class GameMatch
   end
 
   def calculate_total_kills
-    player_kills.values.sum + word_dead.values.sum
+    player_kills.values.sum + world_dead.values.sum
   end
 
   def calculate_kills_by_player
-    player_kills.merge(word_dead) do |_key, value1, value2|
+    player_kills.merge(world_dead) do |_key, value1, value2|
       value1 - value2
     end
   end
@@ -58,7 +58,7 @@ class GameMatch
     )
   end
 
-  def word_dead
+  def world_dead
     @kills.select(&:world?).group_by(&:victim_id).transform_values(&:count)
   end
 
